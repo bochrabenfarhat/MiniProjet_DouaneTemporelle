@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#FCE4EC">
+
+    <!-- Avatar -->
+    <ImageView
+        android:id="@+id/img_voyageur_bbf"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_weight="0.3"
+        android:src="@drawable/ic_voyageur_bbf"
+        android:scaleType="fitCenter"
+        android:contentDescription="Avatar du voyageur" />
+
+    <!-- Partie droite -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:orientation="vertical">
+
+        <!-- Passeport -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:background="#F3E5F5">
+
+            <TextView
+                android:id="@+id/tv_passport_bbf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="PASSEPORT TEMPOREL"
+                android:textColor="#AD1457"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_nom_bbf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_passport_bbf"
+                android:layout_marginTop="15dp"
+                android:text="Voyageur :"
+                android:textColor="#6A1B4D"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_age_bbf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_nom_bbf"
+                android:layout_marginTop="10dp"
+                android:text="Age temporel :"
+                android:textColor="#6A1B4D"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_motif_bbf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_age_bbf"
+                android:layout_marginTop="10dp"
+                android:text="Motif :"
+                android:textColor="#6A1B4D"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Approuver -->
+        <Button
+            android:id="@+id/btn_approuver_bbf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#327334"
+            android:text="Approuver"
+            android:textColor="#FFFFFF"/>
+
+        <!-- Refuser -->
+        <Button
+            android:id="@+id/btn_refuser_bbf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#A42F2F"
+            android:text="Refuser"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+</LinearLayout>
