@@ -16,27 +16,18 @@ import androidx.core.view.WindowInsetsCompat;
 public class VerificationActivity extends AppCompatActivity {
     TextView nom, age, motif;
     Button approuver, refuser;
-    // méthode testa3mel bech net2akdou elli nombre premier wala le
-    public boolean estPremier(int n)
-    {
-        if(n < 2)
-        {
+    // méthode  bech net2akdou elli nombre premier wala le
+    public boolean estPremier(int n) {
+        if(n < 2) {
             return false;
         }
-
-        for(int i = 2; i < n; i++)
-        {
-            if(n % i == 0)
-            {
+        for(int i = 2; i < n; i++) {
+            if(n % i == 0) {
                 return false;
             }
         }
-
         return true;
     }
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,33 +49,33 @@ public class VerificationActivity extends AppCompatActivity {
         String m = i.getStringExtra("MOTIF");
         int ageTemporel = Integer.parseInt(des) - Integer.parseInt(nc);// Integer.parseInt() ta7awel String lel int bech najmou na7sbou l'âge temporel
         // net2akdou ken el motif "Modification du passé" w el différence bin destination w naissance nombre premiernsakkrou bouton approuver
-        if(m.equals("Modification du passé") && estPremier(ageTemporel))
-        {
+        if(m.equals("Modification du passé") && estPremier(ageTemporel)) {
             approuver.setEnabled(false);
             Toast.makeText(VerificationActivity.this,"Risque de paradoxe",Toast.LENGTH_SHORT).show();
         }
         nom.setText("Voyageur : " + n);
-
         age.setText("Age temporel : " + ageTemporel);
-
         motif.setText("Motif : " + m);
-
         // ki l'utilisateur yenzel 3al bouton Refuser
         refuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(VerificationActivity.this, "Voyage refuse", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(VerificationActivity.this, ResultActivity.class);
+                intent.putExtra("NOM", n);
+                intent.putExtra("VERDICT", false);
+                startActivity(intent);
             }
         });
-
         // ki l'utilisateur yenzel 3al bouton Approuver
         approuver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(VerificationActivity.this,"Voyage Approuve",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(VerificationActivity.this,ResultActivity.class);
+                intent.putExtra("NOM", n);
+                intent.putExtra("VERDICT", true);
+                startActivity(intent);
             }
         });
-
 
     }
 }
