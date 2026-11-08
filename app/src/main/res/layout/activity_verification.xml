@@ -9,7 +9,7 @@
     android:padding="16dp"
     android:background="#FCE4EC">
 
-    <!-- Avatar -->
+
     <ImageView
         android:id="@+id/img_voyageur_bbf"
         android:layout_width="0dp"
@@ -19,14 +19,14 @@
         android:scaleType="fitCenter"
         android:contentDescription="Avatar du voyageur" />
 
-    <!-- Partie droite -->
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.7"
         android:orientation="vertical">
 
-        <!-- Passeport -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
 
         </RelativeLayout>
 
-        <!-- Approuver -->
+
         <Button
             android:id="@+id/btn_approuver_bbf"
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
             android:text="Approuver"
             android:textColor="#FFFFFF"/>
 
-        <!-- Refuser -->
+
         <Button
             android:id="@+id/btn_refuser_bbf"
             android:layout_width="match_parent"
