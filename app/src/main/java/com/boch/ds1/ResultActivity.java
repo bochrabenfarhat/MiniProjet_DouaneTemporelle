@@ -29,8 +29,13 @@ public class ResultActivity extends AppCompatActivity {
 
         // narj3ou les données elli taba3thou men VerificationActivity
         Intent i = getIntent();
+        /* avant le cle unique
         String nom = i.getStringExtra("NOM");
-        boolean accepte = i.getBooleanExtra("VERDICT", false);
+        boolean accepte = i.getBooleanExtra("VERDICT", false);*/
+
+        String mat = "0911";
+        String nom = i.getStringExtra(Utils.buildKey(mat, "NOM"));
+        boolean accepte = i.getBooleanExtra(Utils.buildKey(mat, "V"), false);
 
         // ken el voyage ma9boul
         if(accepte) {
@@ -47,7 +52,12 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i2 = new Intent(ResultActivity.this, MainActivity.class);
                 startActivity(i2);
-                finish();
+                finishAffinity();
+
+                /*
+                  el finish() ysakker Activity wa7da bark ou
+                finishAffinity() ysakker les Activities lkol bech ma ynajemch yarja3 bil bouton Back
+               */
             }
         });
 

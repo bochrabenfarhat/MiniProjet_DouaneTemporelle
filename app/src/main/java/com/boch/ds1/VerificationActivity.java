@@ -7,11 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 public class VerificationActivity extends AppCompatActivity {
     TextView nom, age, motif;
@@ -43,10 +40,20 @@ public class VerificationActivity extends AppCompatActivity {
         Intent i = getIntent();
         /* getIntent() traja3 l Intent elli jena biha men MainActivity menha
         najmou narj3ou les données elli taba3thou b putExtra*/
+
+        /* Avant le cle unique
         String n = i.getStringExtra("NOM");// getStringExtra() testa3mel bech narj3ou les données elli taba3thou men MainActivity b putExtra
         String nc = i.getStringExtra("NAISSANCE");
         String des = i.getStringExtra("DESTINATION");
-        String m = i.getStringExtra("MOTIF");
+        String m = i.getStringExtra("MOTIF"); */
+
+        String mat = "0911";
+
+        String n = i.getStringExtra(Utils.buildKey(mat, "NOM"));
+        String nc = i.getStringExtra(Utils.buildKey(mat, "NAISSANCE"));
+        String des = i.getStringExtra(Utils.buildKey(mat, "DESTINATION"));
+        String m = i.getStringExtra(Utils.buildKey(mat, "MOTIF"));
+
         int ageTemporel = Integer.parseInt(des) - Integer.parseInt(nc);// Integer.parseInt() ta7awel String lel int bech najmou na7sbou l'âge temporel
         // net2akdou ken el motif "Modification du passé" w el différence bin destination w naissance nombre premiernsakkrou bouton approuver
         if(m.equals("Modification du passé") && estPremier(ageTemporel)) {
@@ -56,6 +63,9 @@ public class VerificationActivity extends AppCompatActivity {
         nom.setText("Voyageur : " + n);
         age.setText("Age temporel : " + ageTemporel);
         motif.setText("Motif : " + m);
+
+
+        /* avant le cle unique
         // ki l'utilisateur yenzel 3al bouton Refuser
         refuser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +76,7 @@ public class VerificationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         // ki l'utilisateur yenzel 3al bouton Approuver
         approuver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +86,34 @@ public class VerificationActivity extends AppCompatActivity {
                 intent.putExtra("VERDICT", true);
                 startActivity(intent);
             }
+        });*/
+
+        refuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(VerificationActivity.this, ResultActivity.class);
+                i.putExtra(Utils.buildKey(mat, "NOM"), n);
+                i.putExtra(Utils.buildKey(mat, "V"), false);
+                startActivity(i);
+            }
         });
+
+        approuver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(VerificationActivity.this,ResultActivity.class);
+                i.putExtra(Utils.buildKey(mat, "NOM"), n);
+                i.putExtra(Utils.buildKey(mat, "V"), true);
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+
+
 
     }
 }
