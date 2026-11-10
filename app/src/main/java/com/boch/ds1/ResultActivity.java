@@ -39,11 +39,11 @@ public class ResultActivity extends AppCompatActivity {
 
         // ken el voyage ma9boul
         if(accepte) {
-            verdict.setText("Bon voyage " + nom);
+            verdict.setText(getString(R.string.bv,nom));
             layoutResult.setBackgroundColor(Color.parseColor("#C8E6C9"));
         }
         else {
-            verdict.setText(nom + " est en etat d'arrestation temporelle");
+            verdict.setText(getString(R.string.arrestation,nom));
             layoutResult.setBackgroundColor(Color.parseColor("#FFCDD2"));
         }
         // bouton retour lel MainActivity

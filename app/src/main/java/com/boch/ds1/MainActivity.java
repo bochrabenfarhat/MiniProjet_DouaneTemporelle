@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
     EditText nom,naissance,destination;
@@ -50,7 +52,25 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Remplir tous les champs", Toast.LENGTH_SHORT).show();
                 }
                 else
-                {
+                {   int destinationInt = Integer.parseInt(des);
+                    int anneeActuelle = Calendar.getInstance().get(Calendar.YEAR);
+                    int naissanceInt = Integer.parseInt(nc);
+                    int ageDestination = destinationInt - naissanceInt;
+                    // net2akdou elli utilisatuer mawloud
+                    if(naissanceInt > anneeActuelle)
+                    { Toast.makeText(MainActivity.this, "Annee de naissance invalide", Toast.LENGTH_SHORT).show();
+                        return;}
+                    // n7eb l'annee de destination tkoun fel futur
+
+                    // net2akdou elli l annee de destination fil mosta9bel
+                    if(destinationInt <= anneeActuelle)
+                    {Toast.makeText(MainActivity.this,"Choisir une annee future",Toast.LENGTH_SHORT).show();
+                        // ma nkamlouch l traitement ken l annee ghalta
+                        return;}
+                    // net2akdou elli 3omrou 18 ou plus wa9t ki iji ysafer
+                    if(ageDestination < 18)
+                    { Toast.makeText(MainActivity.this, "Le voyageur doit avoir au moins 18 ans a la destination", Toast.LENGTH_SHORT).show();
+                        return;}
                     RadioButton rb = findViewById(choix);// // njibou el radiobutton elli i5tarha l'utilisateur (l id mte7a)
                     String motif = rb.getText().toString(); // ne5dhou esm el motif mel RadioButton
                   //nsan3ou Intent explicite  el Intent hiya wasila testa3melha Android bech tetna9el men Activity l Activity okhrahouni bech nemchiw men MainActivity lel VerificationActivity
